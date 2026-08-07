@@ -1,0 +1,43 @@
+# Complete this ATM simulation
+balance = 1000
+pin = "1234"
+
+entered_pin = input("Enter PIN: ")
+if entered_pin == pin:
+    print("PIN accepted")
+    while True:
+        print("\n1. Check Balance")
+        print("2. Withdraw")
+        print("3. Deposit") 
+        print("4. Exit")
+        
+        choice = input("Choose option: ")
+        
+        # Complete the menu logic here
+        if choice == "1":
+            print("Balance:", balance)
+
+        elif choice == "2":
+            amount = float(input("Enter amount to withdraw: "))
+            if amount <= balance:
+                balance -= amount
+                print("Withdrawal successful")
+                print("Balance:", balance)
+            else:
+                print("Insufficient balance")
+
+        elif choice == "3":
+            amount = float(input("Enter amount to deposit: "))
+            balance += amount
+            print("Deposit successful")
+            print("Balance:", balance)
+
+        elif choice == "4":
+            print("Goodbye!")
+            break
+
+        else:
+            print("Invalid option")
+        
+else:
+    print("Invalid PIN")

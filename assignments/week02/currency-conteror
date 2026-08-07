@@ -1,0 +1,19 @@
+
+rate = 35.5
+
+print("1. THB to USD")
+print("2. USD to THB")
+
+choice = int(input("Choose (1-2): "))
+amount = float(input("Enter amount: "))
+
+if choice == 1:
+    result = amount / rate
+    print("Formula:", amount, "/", rate)
+    print("USD =", format(result, ".2f"))
+elif choice == 2:
+    result = amount * rate
+    print("Formula:", amount, "*", rate)
+    print("THB =", format(result, ".2f"))
+else:
+    print("Invalid choice")
