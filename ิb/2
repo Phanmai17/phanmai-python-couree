@@ -1,0 +1,59 @@
+def calculate_tax(income):
+    tax_range = [
+        (150000, 0.00),
+        (300000, 0.05),
+        (500000, 0.10),
+        (750000, 0.15),
+        (1000000, 0.20),
+        (2000000, 0.25),
+        (5000000, 0.30),
+        (float("inf"), 0.35)
+    ]
+
+    total_tax = 0
+    previous = 0
+    details = []
+
+    for limit, rate in tax_range:
+        if income > previous:
+            taxable = min(income, limit) - previous
+            tax = taxable * rate
+            total_tax += tax
+
+            if previous == 0:
+                details.append((0, min(income, limit), tax))
+            else:
+                details.append((previous + 1, min(income, limit), tax))
+
+            previous = limit
+        else:
+            break
+
+    net_income = income - total_tax
+    effective_rate = (total_tax / income) * 100
+
+    return details, total_tax, net_income, effective_rate
+
+
+def display_result(details, total_tax, net_income, effective_rate):
+    print("\nTax Details")
+    print("-" * 40)
+
+    for start, end, tax in details:
+        print(f"{start:,} - {end:,} : {tax:,.2f} Baht")
+
+    print("-" * 40)
+    print(f"Total Tax          : {total_tax:,.2f} Baht")
+    print(f"Net Income         : {net_income:,.2f} Baht")
+    print(f"Effective Tax Rate : {effective_rate:.2f}%")
+
+
+def main():
+    income = float(input("Enter your income (Baht): "))
+
+    details, total_tax, net_income, effective_rate = calculate_tax(income)
+
+    display_result(details, total_tax, net_income, effective_rate)
+
+
+main()15

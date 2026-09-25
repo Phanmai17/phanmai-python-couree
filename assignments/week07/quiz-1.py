@@ -6,19 +6,22 @@
 """
 
 class Rectangle:
+    #constructor method == กำหนดข้อมูลที่จำเป็นต้องใช้ในการแก้ปัญหา
     def __init__(self, length, width):
         self.length = length
         self.width = width
 
-    # Method to get the area
+    # Method to get the area เติมโค้ดเพื่อให้method นี้คืนค่าพื้นที่
     def get_area(self):
-        pass
+        return self.length * self.width
 
-    # Method to get the perimeter
+    # Method to get the perimeter เติมโค้ดเพื่อให้method นี้คืนค่าความยาวรอบ
     def get_perimeter(self):
-        pass
+        return 2 * (self.length + self.width)
 
 
 rect = Rectangle(10, 5)
+
 print(rect.get_area())       # Should print 50
 print(rect.get_perimeter())  # Should print 30
+
